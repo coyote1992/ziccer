@@ -1,0 +1,449 @@
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(40px, 7vh, 88px));
+  padding-bottom: clamp(56px, 8vh, 96px);
+}
+.hero__grid {
+  display: grid;
+  gap: 40px;
+}
+.hero__text .display {
+  max-width: 9.5em;
+}
+.hero__lead {
+  margin-top: 28px;
+}
+.hero__media {
+  position: relative;
+}
+.hero__photo {
+  aspect-ratio: 4 / 5;
+  animation: hero-in 1.4s var(--ease) both;
+}
+.hero__club {
+  position: absolute;
+  aspect-ratio: 3 / 2;
+  width: 52%;
+  left: -6%;
+  bottom: -9%;
+  animation: hero-in 1.4s 0.25s var(--ease) both;
+}
+@keyframes hero-in {
+  from {
+    clip-path: inset(12% 8% 12% 8% round 14px);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 14px);
+    opacity: 1;
+  }
+}
+
+.paths {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.path {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  height: 100%;
+  padding: 20px 22px 22px;
+  text-decoration: none;
+  transition:
+    border-color 0.3s var(--ease),
+    background-color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.path__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 17.5px;
+}
+.path__title svg {
+  width: 18px;
+  height: 18px;
+  color: var(--clay);
+  transition: transform 0.3s var(--ease);
+}
+.path__text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.path:hover {
+  border-color: rgba(229, 120, 76, 0.55);
+  background: rgba(14, 40, 36, 0.62);
+  transform: translateY(-2px);
+}
+.path:hover .path__title svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 900px) {
+  .hero__media {
+    max-width: 640px;
+    margin: 8px 0 48px;
+  }
+  .hero__photo {
+    aspect-ratio: 5 / 4;
+  }
+  .hero__club {
+    width: 46%;
+    left: auto;
+    right: -2%;
+    bottom: -14%;
+  }
+}
+
+@media (min-width: 901px) {
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-h) + clamp(28px, 6vh, 88px));
+  }
+  .hero__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4.4fr);
+    column-gap: clamp(40px, 6vw, 96px);
+    row-gap: clamp(48px, 7vh, 80px);
+    align-items: center;
+  }
+  .hero__media {
+    width: 100%;
+    max-width: min(440px, 54vh);
+    justify-self: end;
+  }
+  .paths {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* ---------- courts ---------- */
+
+.section-lead {
+  margin-top: 28px;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(48px, 6vw, 72px) 0;
+  border-top: 1px solid var(--line);
+}
+.facts > div {
+  padding: 22px 20px 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.facts > div:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+.facts > div:nth-child(even) {
+  padding-left: 20px;
+}
+.facts__num {
+  font-family: var(--font-display);
+  font-variant-numeric: lining-nums;
+  font-size: clamp(56px, 6vw, 84px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.facts__unit {
+  font-size: 0.45em;
+  margin-left: 4px;
+  color: var(--clay-soft);
+  font-style: italic;
+}
+.facts dd {
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: var(--ink-2);
+  max-width: 14em;
+}
+@media (min-width: 701px) {
+  .facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .facts > div {
+    padding: 24px 20px 4px;
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
+  .facts > div:first-child {
+    padding-left: 0;
+  }
+  .facts > div:last-child {
+    border-right: 0;
+  }
+}
+
+.court-photos {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+}
+.court-photos__wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 12 / 5;
+}
+.court-photos__a,
+.court-photos__b {
+  aspect-ratio: 4 / 3;
+}
+@media (max-width: 600px) {
+  .court-photos__wide {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.prices {
+  margin-top: clamp(64px, 8vw, 104px);
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+.prices__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 18px;
+}
+.prices__note {
+  margin: 16px 0 28px;
+}
+
+/* ---------- coach ---------- */
+
+.coach__title {
+  max-width: 7.8em;
+}
+.coach {
+  display: grid;
+  gap: 32px;
+  margin-top: clamp(40px, 5vw, 64px);
+}
+.coach__photo {
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 2 / 3;
+}
+.coach__photo img {
+  filter: saturate(0.92) contrast(1.04);
+}
+.creds {
+  list-style: none;
+  margin: 28px 0 32px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.creds li {
+  padding: 13px 0 13px 30px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.creds li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: var(--clay);
+}
+@media (min-width: 701px) {
+  .coach {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 56px);
+    align-items: start;
+  }
+}
+
+/* ---------- lessons ---------- */
+
+.offers {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.offers li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.offers__tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.offers__title {
+  margin: 6px 0 6px;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.offers p {
+  color: var(--ink-2);
+}
+.lesson-card {
+  padding: clamp(24px, 3vw, 36px);
+}
+@media (min-width: 901px) {
+  .lesson-card {
+    margin-top: 150px;
+  }
+}
+.lesson-card__big {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 2.8vw, 40px);
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+/* ---------- summer camp ---------- */
+
+.camp__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.camp__lead {
+  margin-top: 26px;
+}
+.camp__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 960px;
+  margin: clamp(40px, 5vw, 64px) 0 28px;
+}
+.camp__facts > div {
+  padding: 22px 18px;
+  text-align: left;
+}
+.camp__facts dt {
+  font-family: var(--font-display);
+  font-variant-numeric: lining-nums;
+  font-size: clamp(28px, 2.6vw, 38px);
+  line-height: 1;
+  white-space: nowrap;
+}
+.camp__facts dd {
+  margin: 10px 0 0;
+  font-size: 14.5px;
+  color: var(--ink-3);
+}
+@media (min-width: 801px) {
+  .camp__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.camp__note {
+  max-width: 44em;
+  color: var(--ink-2);
+}
+.camp__cta {
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* ---------- reviews ---------- */
+
+.reviews {
+  display: grid;
+  gap: 40px;
+}
+.review {
+  margin: 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
+}
+.review blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.review figcaption {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+@media (min-width: 801px) {
+  .reviews {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+  }
+}
+
+/* ---------- getting here ---------- */
+
+.visit {
+  align-items: center !important;
+}
+.visit__photo {
+  aspect-ratio: 4 / 3;
+}
+
+/* ---------- final ---------- */
+
+.final {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 40vh;
+  padding-bottom: clamp(96px, 14vh, 160px);
+}
+.final__crest {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 36px;
+  color: var(--mint);
+  opacity: 0.9;
+}
+.final__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.final .lead {
+  margin-top: 22px;
+}
+.final__cta {
+  justify-content: center;
+  margin-top: 36px;
+}
+
+/* ---------- room for the dot shapes to form ---------- */
+
+/* desktop: the court keeps standing while the prices are read; "No.7" forms in this gap */
+@media (min-width: 901px) {
+  #edzo {
+    padding-top: max(var(--section-y), 34vh);
+  }
+}
+/* phones: the court and the racket form in the top third, above their headings */
+@media (max-width: 900px) {
+  #palyak,
+  #oktatas {
+    padding-top: 46svh;
+  }
+}
